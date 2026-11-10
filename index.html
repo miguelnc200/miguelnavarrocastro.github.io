@@ -65,34 +65,6 @@
   </section>
 
   <section class="research" aria-labelledby="research-h">
-    <h2 id="research-h">Research</h2>
-    <div class="colony-card">
-      <div class="colony-stage">
-        <canvas id="colony" width="560" height="560" aria-label="Simulated stem cell colony with three cell fates, connected by a growing filtration"></canvas>
-      </div>
-      <div class="colony-text">
-        <h3>Shape, colour and cell fate</h3>
-        <p>When a colony of human stem cells is exposed to BMP4, it organises itself into rings of different
-        cell fates, a miniature version of gastrulation. Each fate is a colour, so the colony becomes a
-        coloured point cloud.</p>
-        <p>Drag the slider to grow a ball around every cell. Cells join when their balls touch: grey links
-        join cells of the same fate, coloured links join different fates. Tracking how and when those
-        links appear is the idea behind chromatic TDA.</p>
-        <label class="slider-label" for="radius">Filtration radius <output id="radius-out" for="radius">0</output></label>
-        <input type="range" id="radius" min="0" max="40" value="11" step="0.5">
-        <dl class="stats">
-          <div><dt>Connected groups</dt><dd id="stat-components">–</dd></div>
-          <div><dt>Links within a fate</dt><dd id="stat-mono">–</dd></div>
-          <div><dt>Links across fates</dt><dd id="stat-chroma">–</dd></div>
-        </dl>
-        <ul class="legend">
-          <li><span class="sw s1"></span>SOX2, ectoderm-like (centre)</li>
-          <li><span class="sw s2"></span>BRA, mesoderm-like (middle ring)</li>
-          <li><span class="sw s3"></span>CDX2, extra-embryonic-like (edge)</li>
-        </ul>
-        <p class="note">Simulated data for illustration.</p>
-      </div>
-    </div>
     <div class="side-project">
       <h3>Football analytics</h3>
       <p>With Blanca De-la-Cruz-Torres and Anselmo Ruiz-de-Alarcón-Quintero I build and validate
