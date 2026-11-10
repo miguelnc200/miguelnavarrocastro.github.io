@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Miguel Navarro Castro</title>
+  <meta name="description" content="PhD student in Mathematics at the University of Seville: chromatic topological data analysis of stem cell colonies, and football analytics.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="navbar">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span>Miguel</span> Navarro Castro</a>
+    <nav aria-label="Main">
+      <button class="icon-btn menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><i class="fa-solid fa-bars"></i></button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" aria-current="page">about</a></li>
+        <li><a href="publications.html">publications</a></li>
+        <li><a href="cv.html">cv</a></li>
+        <li><button class="icon-btn" id="theme-toggle" aria-label="Switch colour theme"><i class="fa-solid fa-moon"></i></button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <section class="intro">
+    <h1 class="name"><span>Miguel</span> Navarro Castro</h1>
+    <p class="tagline">PhD student in Mathematics, University of Seville</p>
+
+    <figure class="profile">
+      <img src="prof_pic.jpg" alt="Portrait of Miguel Navarro Castro" width="600" height="725">
+      <figcaption>Institute of Mathematics (IMUS)<br>University of Seville, Spain</figcaption>
+    </figure>
+
+    <div class="bio">
+      <!-- ===== EDIT THE BIO BELOW ===== -->
+      <p>I am a PhD student in Mathematics at the <a href="https://www.us.es/">University of Seville</a>,
+      advised by María José Jiménez and Elena Camacho Aguilar. I work where applied topology meets
+      developmental biology.</p>
+      <p>My thesis uses <strong>chromatic topological data analysis</strong> to study how BMP signalling
+      patterns human pluripotent stem cell (hPSC) colonies during gastrulation-like differentiation.
+      From fluorescence microscopy images I segment and track individual cells, describe how cells of
+      different fates are arranged relative to each other with chromatic topological summaries, and use
+      machine learning to tell apart colonies grown under different BMP protocols.</p>
+      <p>In parallel, I work on <strong>football analytics</strong>, developing shot-quality metrics such as
+      expected goals on target (xGOT) and Expected Shot Impact Timing (xSIT) for elite men's and
+      women's football.</p>
+      <p>Before the PhD I studied a BSc and an MSc in Mathematics in Seville, with theses on the
+      Bernstein–Sato polynomial and ideal. I teach mathematics to architecture and engineering students
+      at the University of Seville, and previously taught at the University of Córdoba.</p>
+      <!-- ===== END OF BIO ===== -->
+      <div class="socials">
+        <a href="mailto:mignavcas@alum.us.es" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        <a href="https://scholar.google.es/citations?user=B-cKI7cAAAAJ&amp;hl=en" aria-label="Google Scholar"><i class="ai ai-google-scholar"></i></a>
+        <a href="https://github.com/miguelnc200" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/miguel-navarro-castro-982493151/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a class="cv-link" href="cv.pdf"><i class="fa-solid fa-file-arrow-down"></i> CV (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="research" aria-labelledby="research-h">
+    <h2 id="research-h">Research</h2>
+    <div class="colony-card">
+      <div class="colony-stage">
+        <canvas id="colony" width="560" height="560" aria-label="Simulated stem cell colony with three cell fates, connected by a growing filtration"></canvas>
+      </div>
+      <div class="colony-text">
+        <h3>Shape, colour and cell fate</h3>
+        <p>When a colony of human stem cells is exposed to BMP4, it organises itself into rings of different
+        cell fates, a miniature version of gastrulation. Each fate is a colour, so the colony becomes a
+        coloured point cloud.</p>
+        <p>Drag the slider to grow a ball around every cell. Cells join when their balls touch: grey links
+        join cells of the same fate, coloured links join different fates. Tracking how and when those
+        links appear is the idea behind chromatic TDA.</p>
+        <label class="slider-label" for="radius">Filtration radius <output id="radius-out" for="radius">0</output></label>
+        <input type="range" id="radius" min="0" max="40" value="11" step="0.5">
+        <dl class="stats">
+          <div><dt>Connected groups</dt><dd id="stat-components">–</dd></div>
+          <div><dt>Links within a fate</dt><dd id="stat-mono">–</dd></div>
+          <div><dt>Links across fates</dt><dd id="stat-chroma">–</dd></div>
+        </dl>
+        <ul class="legend">
+          <li><span class="sw s1"></span>SOX2, ectoderm-like (centre)</li>
+          <li><span class="sw s2"></span>BRA, mesoderm-like (middle ring)</li>
+          <li><span class="sw s3"></span>CDX2, extra-embryonic-like (edge)</li>
+        </ul>
+        <p class="note">Simulated data for illustration.</p>
+      </div>
+    </div>
+    <div class="side-project">
+      <h3>Football analytics</h3>
+      <p>With Blanca De-la-Cruz-Torres and Anselmo Ruiz-de-Alarcón-Quintero I build and validate
+      metrics that describe where and when shots reach the goal, and what they say about strikers and
+      goalkeepers. Eight papers so far, in <i>Big Data and Cognitive Computing</i>, <i>Applied Sciences</i>,
+      <i>Data</i> and the <i>International Journal of Sports Science &amp; Coaching</i>.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="news-h">
+    <h2 id="news-h">News</h2>
+    <table class="news">
+      <tr><th scope="row">2026</th><td>Poster at the <i>Jornadas de Topología de Datos 2026</i>.</td></tr>
+      <tr><th scope="row">2026</th><td>Two new papers on shot-quality metrics, in <i>Big Data and Cognitive Computing</i> and <i>Data</i>.</td></tr>
+      <tr><th scope="row">2025</th><td>Started teaching at the University of Seville.</td></tr>
+      <tr><th scope="row">2025</th><td>Awarded an IMUS research initiation grant (PI3) on single-cell responses of stem cells to biochemical stimuli.</td></tr>
+      <tr><th scope="row">2024</th><td>Started my PhD in Mathematics at the University of Seville.</td></tr>
+    </table>
+  </section>
+
+  <section aria-labelledby="sel-h">
+    <h2 id="sel-h">Selected publications</h2>
+    <ol class="pubs">
+    <li class="pub">
+      <div class="pub-thumb"><img src="delacruz2026temporal.svg" alt="" width="220" height="140" loading="lazy"><span class="badge">BDCC</span></div>
+      <div class="pub-body">
+        <h3 class="pub-title">Temporal Patterns of Advanced Shot-Quality Metrics in Elite Men&#x27;s and Women&#x27;s European Football</h3>
+        <p class="pub-authors">B. De-la-Cruz-Torres, A. Ruiz-de-Alarcón-Quintero, <span class="me">M. Navarro-Castro</span></p>
+        <p class="pub-venue"><i>Big Data and Cognitive Computing</i>, 10, 214, 2026</p>
+        <div class="pub-actions">
+          <a class="btn" href="https://doi.org/10.3390/bdcc10070214">DOI</a>
+          <details class="bib"><summary class="btn">BibTeX</summary><pre>@article{delacruz2026temporal,
+  title   = {Temporal Patterns of Advanced Shot-Quality Metrics in Elite Men&#x27;s and Women&#x27;s European Football},
+  author  = {De-la-Cruz-Torres, Blanca and Ruiz-de-Alarcón-Quintero, Anselmo and Navarro-Castro, Miguel},
+  journal = {Big Data and Cognitive Computing},
+  volume  = {10},
+  pages   = {214},
+  year    = {2026},
+  doi     = {10.3390/bdcc10070214}
+}</pre></details>
+        </div>
+      </div>
+    </li>
+    <li class="pub">
+      <div class="pub-thumb"><img src="delacruz2025xsit.svg" alt="" width="220" height="140" loading="lazy"><span class="badge">Appl. Sci.</span></div>
+      <div class="pub-body">
+        <h3 class="pub-title">Quantifying Football Shooting Precision: The Expected Shot Impact Timing (xSIT) Approach</h3>
+        <p class="pub-authors">B. De-la-Cruz-Torres, <span class="me">M. Navarro-Castro*</span>, A. Ruiz-de-Alarcón-Quintero</p>
+        <p class="pub-venue"><i>Applied Sciences</i>, 15(12), 6735, 2025</p>
+        <div class="pub-actions">
+          <a class="btn" href="https://doi.org/10.3390/app15126735">DOI</a>
+          <details class="bib"><summary class="btn">BibTeX</summary><pre>@article{delacruz2025xsit,
+  title   = {Quantifying Football Shooting Precision: The Expected Shot Impact Timing (xSIT) Approach},
+  author  = {De-la-Cruz-Torres, Blanca and Navarro-Castro, Miguel and Ruiz-de-Alarcón-Quintero, Anselmo},
+  journal = {Applied Sciences},
+  volume  = {15},
+  number  = {12},
+  pages   = {6735},
+  year    = {2025},
+  doi     = {10.3390/app15126735}
+}</pre></details>
+        </div>
+      </div>
+    </li>
+    <li class="pub">
+      <div class="pub-thumb"><img src="delacruz2025xgot.svg" alt="" width="220" height="140" loading="lazy"><span class="badge">BDCC</span></div>
+      <div class="pub-body">
+        <h3 class="pub-title">An Expected Goals On Target (xGOT) Model: Accounting for Goalkeeper Performance in Football</h3>
+        <p class="pub-authors">B. De-la-Cruz-Torres, <span class="me">M. Navarro-Castro*</span>, A. Ruiz-de-Alarcón-Quintero</p>
+        <p class="pub-venue"><i>Big Data and Cognitive Computing</i>, 9(3), 64, 2025</p>
+        <div class="pub-actions">
+          <a class="btn" href="https://doi.org/10.3390/bdcc9030064">DOI</a>
+          <details class="bib"><summary class="btn">BibTeX</summary><pre>@article{delacruz2025xgot,
+  title   = {An Expected Goals On Target (xGOT) Model: Accounting for Goalkeeper Performance in Football},
+  author  = {De-la-Cruz-Torres, Blanca and Navarro-Castro, Miguel and Ruiz-de-Alarcón-Quintero, Anselmo},
+  journal = {Big Data and Cognitive Computing},
+  volume  = {9},
+  number  = {3},
+  pages   = {64},
+  year    = {2025},
+  doi     = {10.3390/bdcc9030064}
+}</pre></details>
+        </div>
+      </div>
+    </li>
+    </ol>
+    <p class="more"><a href="publications.html">All publications</a></p>
+  </section>
+</main>
+<footer>
+  <div class="foot-inner">
+    <div class="socials small">
+      <a href="mailto:mignavcas@alum.us.es" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      <a href="https://scholar.google.es/citations?user=B-cKI7cAAAAJ&amp;hl=en" aria-label="Google Scholar"><i class="ai ai-google-scholar"></i></a>
+      <a href="https://github.com/miguelnc200" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/miguel-navarro-castro-982493151/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+    </div>
+    <p>&copy; <span id="year">2026</span> Miguel Navarro Castro. Layout inspired by <a href="https://github.com/alshedivat/al-folio">al-folio</a>.</p>
+  </div>
+</footer>
+</body>
+</html>
